@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ myself.personaname }}</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .info p {
+            margin: 10px 0;
+        }
+
+        .table-container {
+            display: table;
+            width: 50%; /* Cambié el ancho a la mitad de la pantalla */
+            margin: 20px auto; /* Centrar la tabla */
+            border: 2px solid black;
+        }
+
+        .row {
+            display: table-row;
+        }
+
+        .cell {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ myself.personaname }}</h1>
+    </div>
+
+    <img src="{{ myself.avatar }}" alt="{{ myself.personaname }}">
+
+    <div class="info">
+        <p>Steam ID: {{ myself.steamid }}</p>
+        <p>Link: <a href="{{ myself.profileurl }}" target="_blank">{{ myself.profileurl }}</a></p>
+    </div>
+
+    <div class="table-container">
+        <div class="row">
+            <div class="cell buttons">
+                <button onclick="friendListRed()">Friend List</button>
+                <p>Hago una petición con el ID insertado a la API de steam donde pido los amigos del ID, con los ID de los amigos hago otra petición a la API por cada amigo, he creado una clase amigo para filtrar los datos y hacer un array de amigos, se lo paso al frontend y hago una lista con estos datos.</p>
+            </div>
+            <div class="cell buttons">
+                <button onclick="gamesListRed()">Games List</button>
+                <p>Hago una petición con el ID insertado a la API de steam donde pido los juegos del usuario y al estar ya filtrados paso el JSON directamente, en el frontend hago una tabla donde para obtener la imagen formo un link con los IDS</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function friendListRed() {
+            window.location.href = "/friends/{{ myself.steamid }}";
+        }
+
+        function gamesListRed() {
+            window.location.href = "/games/{{ myself.steamid }}";
+        }
+    </script>
+</body>
+</html>

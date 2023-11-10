@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SteamCarton</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3em; /* Tamaño de la fuente del título */
+        }
+
+        #inputText {
+            margin-bottom: 10px;
+            padding: 10px; /* Añadir un relleno alrededor del input */
+            border: 1px solid #3498db; /* Borde del input */
+            border-radius: 5px; /* Bordes redondeados */
+            font-size: 16px; /* Tamaño de la fuente del input */
+        }
+
+        #inputText::placeholder {
+            font-size: 16px; /* Tamaño de la fuente del placeholder */
+        }
+
+        #submitButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #submitButton:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SteamCarton</h1>
+
+    <input type="text" id="inputText" name="idSteam" placeholder="ID_Steam" onclick="clearInput()">
+    <button id="submitButton" onclick="redirect()">Acceder</button>
+
+    <script>
+        function redirect() {
+            var inputValue = document.getElementById("inputText").value;
+            window.location.href = "/myself/" + inputValue;
+        }
+
+        function clearInput() {
+            document.getElementById("inputText").value = '';
+        }
+    </script>
+
+</body>
+</html>
